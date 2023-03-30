@@ -11,14 +11,15 @@ router = APIRouter()
 
 @router.post("/chat", summary="chatgpt")
 async def openai_chat_request(
-        messages: str = Body(..., description="json"),
+        request: Request,
+        # messages: str = Body(..., description="json"),
 ):
     """
     :param messages:
     :return:
     """
     code = RespCode.SUCCESS
-    m = json.loads(messages)
+    m = json.loads(await request.body())
 
     if m.get("messages")[0].get("role") != 'system':
         m["messages"].insert(0, {

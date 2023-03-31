@@ -30,8 +30,11 @@ ALLOWED_HOSTS: List[str] = config(
 # Template dir
 TEMPLATE_DIR = config('TEMPLATE_DIR', default='templates')
 
+# Openai Chatgpt
 BOT_DESC = config('BOT_DESC', default="You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible.")
 API_KEY= "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"
+MODEL="gpt-3.5-turbo"
+
 # logging configuration
 LOGGING_LEVEL = logging.DEBUG if DEBUG else logging.INFO
 LOGGERS = ("uvicorn.asgi", "uvicorn.access")

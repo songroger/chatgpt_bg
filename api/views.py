@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, Request, Body
 
 from pydantic import BaseModel
 from utils.response import json_response, RespCode
-from core.config import BOT_DESC, API_KEY, logger
+from core.config import BOT_DESC, API_KEY, MODEL, logger
 
 import openai
 openai.api_key = API_KEY
@@ -28,7 +28,7 @@ async def openai_chat_request(
             "content": BOT_DESC
         })
 
-    completion = await openai.ChatCompletion.acreate(model="gpt-3.5-turbo", 
+    completion = await openai.ChatCompletion.acreate(model=MODEL, 
                                               messages=m["messages"])
     # logger.info(completion.choices[0].message.content)
     reply = completion.choices[0].message.content

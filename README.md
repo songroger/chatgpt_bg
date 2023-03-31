@@ -1,22 +1,41 @@
 API info:
 
 
-
 API definition:
 
-```json
+
 url: /api/v1/chat
 method: post
-payload json: 
+payload: 
 
-response: json 
-{"status_code": 200, 
- "content": {"code":code info, 
-              "data": {
-                "score": ..,
-                "specs": ..
-                }
+```json
+{
+    "messages": [{
+        "role": "user",
+        "content": "Ai会替代人类工作吗"
+    }]
+}
+```
+
+response:
+
+```json
+{
+    "code": 200,
+    "errorMsg": "",
+    "data": {
+        "messages": [
+            {
+                "role": "system",
+                "content": "You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible."
+            },
+            {
+                "role": "user",
+                "content": "Ai会替代人类工作吗"
             }
+        ],
+        "reply": "AI可以替代一些人类工作，但不是所有工作都可以被替代。"
+    }
 }
 ```
 

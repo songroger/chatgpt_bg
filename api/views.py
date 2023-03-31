@@ -35,7 +35,7 @@ async def openai_chat_request(
         msg = "No reply, try again"
         return json_response(RespCode.FAILURE, msg=msg)
 
-    data = {"messages": m.get("messages", []), 
+    data = {"messages": m.get("messages", []).append(completion.choices[0].message), 
             "reply": reply}
 
     return json_response(code, data=data)

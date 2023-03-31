@@ -28,7 +28,7 @@ async def openai_chat_request(
             "content": BOT_DESC
         })
 
-    completion = await openai.ChatCompletion.create(model="gpt-3.5-turbo", 
+    completion = await openai.ChatCompletion.acreate(model="gpt-3.5-turbo", 
                                               messages=m["messages"])
     logger.info(completion.choices[0].message.content)
     data = {"messages": m.get("messages", []), 

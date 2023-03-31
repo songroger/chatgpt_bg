@@ -18,7 +18,7 @@ def create_app():
         allow_headers=["*"],
     )
 
-    app.mount('/static', StaticFiles(directory='static'), name='static')
+    app.mount('/assets', StaticFiles(directory='assets'), name='static')
 
     # app.add_event_handler("startup", create_start_app_handler())
     # app.add_event_handler("shutdown", create_stop_app_handler())

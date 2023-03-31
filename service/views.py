@@ -9,14 +9,10 @@ router = APIRouter()
 
 @router.get('/')
 async def index(request: Request):
-    # print(posts.select())
-    post_list = [1,2,3]
+
     return templates.TemplateResponse(
         'index.html',
         {
-            'request': request,
-            'post_list': post_list
+            'request': request
         }
     )
-
-

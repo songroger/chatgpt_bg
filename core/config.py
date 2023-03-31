@@ -32,7 +32,7 @@ TEMPLATE_DIR = config('TEMPLATE_DIR', default='templates')
 
 # Openai Chatgpt
 BOT_DESC = config('BOT_DESC', default="You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible.")
-API_KEY= "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"
+API_KEY= config('API_KEY', default="")
 MODEL="gpt-3.5-turbo"
 
 # logging configuration

@@ -30,12 +30,14 @@ async def openai_chat_request(
 
     completion = await openai.ChatCompletion.acreate(model="gpt-3.5-turbo", 
                                               messages=m["messages"])
-    logger.info(completion.choices[0].message.content)
-    data = {"messages": m.get("messages", []), 
-            "reply": "AI可以替代一些人类工作，但不是所有工作都可以被替代。"}
+    # logger.info(completion.choices[0].message.content)
+    reply = completion.choices[0].message.content
+    if not reply:
+        msg = "No reply, try again"
+        return json_response(RespCode.FAILURE, msg=msg)
 
-    if code != RespCode.SUCCESS:
-        return json_response(code, reason=data)
+    data = {"messages": m.get("messages", []), 
+            "reply": reply}
 
     return json_response(code, data=data)
 

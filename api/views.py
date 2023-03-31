@@ -5,9 +5,7 @@ from fastapi import APIRouter, Depends, Request, Body
 from pydantic import BaseModel
 from utils.response import json_response, RespCode
 from core.config import BOT_DESC, API_KEY, MODEL, logger
-
-import openai
-openai.api_key = API_KEY
+from core import openai
 
 router = APIRouter()
 

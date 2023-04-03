@@ -41,3 +41,12 @@ async def openai_chat_request(
 
     return json_response(code, data=data)
 
+
+
+@router.post("/mykey", summary="query_key")
+async def query_key_request(request: Request):
+    m = json.loads(await request.body())
+
+    data={"key": m.get("orderId")}
+
+    return json_response(code, data=data)
